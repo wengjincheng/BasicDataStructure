@@ -1,0 +1,165 @@
+    下标从1开始  
+    <- 赋值  
+    <<- 局部变量提升为全局变量  
+    x[2:3] x的第二个至第3个元素  
+    mean() 均值  
+    sd() 标准差  
+    rbind() row-bind行绑定，给矩阵增加行  
+    %*% 矩阵乘法  
+    factor() 向量转化为因子  
+      
+    list(x= ,y= ) 列表：可以放入不同类型的数据(结构体) $x调用  
+    str() structure结构  
+    数据表的写入/读出：  
+        write.table(x,file={,sep=','}) 写入  
+        read.table(file=) 读出  
+    seq(from,to,by) 等差数列  
+    rep(x,n) 重复  
+      
+    游程：在一个0和1组成的序列，一个连续的0或1的串称为游程  
+    vector(length,mode="numeric")产生一个给定的长度和模式的向量  
+    过半数原则(majority rule):数占总数大于1/2则预测下一个数为该数  
+    abs() 绝对值  
+    cumsum() cumulative sums累和  
+    round() 四舍五入到整数  
+    matrix(data, nrow = 1, ncol = 1) 创建矩阵  
+      
+    NA:缺失值(无法计算 mean(x,na.rm=T)/移除)  
+    NULL:空值  
+      
+    %% 求模  
+    z<-c(z,i) 在z后添加i  
+    筛选:  
+        1.y[x>2]  
+        2.subset(x,select)  
+        3.complete.cases(d) #结果行中含NA为F，不含NA为T  
+    ifelse(select,x,y) 向量化选择(形同：a>b?x:y)  
+    lapply(X, FUN)：list_apply返回一个长度与X一致的列表，每个元素为FUN计算出的结果  
+    diff()    滞后运算(=后n个-前n个)  
+    for循环可以对字符串向量循环  
+    which(select) 查找下标  
+    列表list()中x的调用：  
+        1.x[[a]] 下标为a的数据  
+        2.x$name  
+        3.x[["name"]]  
+    单中括号[]返回原列表的子列表,双重中括号[[]]一次只能提取列表的一个组件  
+    data.frame() 数据框(excel表格，要求长度一致)  
+      
+    : 整数integer  
+    c({,recursive=T}) 建立向量：浮点数double | recursive=T将第二层的列表“压平”到第一层，组合成一个向量  
+      
+    names(x) x的名字集  
+    names(x)<-c("a","b") 命名为"a","b"  
+    install.packages("package","path") 安装包  
+    library(pixmap) 引入图像包  
+    locator() 找坐标点  
+    plot(y~x{,pch="^",new=FALSE}) 散点图：pch为画出的符号，new=FALSE表示在同一张图上画出  
+    attributes() 属性  
+      
+    绘图包：lattice、ggplot2  
+    当前工作路径：getwd()  
+    返回字符串：as.character()  
+    读取数据：cat()  
+    本地写入：  
+        1.output<-file() 建立一个连接  
+        2.cat(x,sep='\t',file=output) 写入    #字符串的写入writeLines(text, con=output) 读出readLines(output)  
+        3.close(output) 关闭  
+    本地读出：      
+        1.input<-scan(file=output)    #为数值的读入  
+        2.cat(input) 读出  
+      
+    RDOBC连接数据库:  
+        1.con<-odbcConnect("ODBC数据源名称",uid="user",pwd="password")    #连接  
+        2.sqlTables(con)    #查询表  
+        3.data<-sqlFetch(con,"table")    #取出table表  
+        4.sqlQuery(con,"select * from temp") #执行语句  
+        5.sqlSave(con,data,tablename=) #数据保存  
+        6.sqlDrop(con,"table")    #删除表  
+        7.odbcClose(con)    #关闭连接  
+      
+    runif(n, min = 0, max = 1) 产生0-1的n个随机数据  
+    apply(matrix,dim{1:行 2：列},function)  
+    t()：转置函数  
+    which.max() 输出最大值序号  
+    z[1,1,drop=FALSE] 避免降低维度drop=FALSE  
+    z<-array(data=c(m1,m2),dim=c(row,col,layer)) 三维数组  
+    rnorm(n=100,mean=0,sd=1) 正态分布  
+    lm(y~x) 线性模型  
+    abline() 回归线，其输入是回归模型对象 [判定系数：1为评估最好]  
+    set.seed() 生成随机数的种子，种子能让结果具有重复性  
+    predict(model,interval="") 回归估计  
+    AIC(model,...) 回归诊断  
+      
+    sort() 排序  
+    order() 排序(返回排序后向量在原向量中的索引)  
+    merge() 合并相同行  
+    factor(x",levels=c(1,2,3)") 因子：分类  
+    tapply(x,f,g) 向量x、因子f或因子列表list(y,x)、函数g         原理：索引值的向量集合  
+    by(x,f,g) x可能是向量，矩阵，数据框；tapply只能是向量  
+    split(x, f) 形成分组,向量x、因子f或因子列表list(y,x)  
+    as.data.frame() 强制成为数据框  
+    cut(x, breaks) 把x中元素在breaks中找到对应的区间  
+      
+    for(n in x) 第一次迭代n=x[1],第二次迭代n=x[2]  
+    next 相当于continue  
+    get() 接受一个对象名然后返回对象内容  
+    ls(",pattern="object"") 显示顶层函数和全局变量,pattern=想要查找的对象名  
+    rm(",list=ls()") 删除特定对象,list=ls()删除特定对象集合  
+    source("path") 相当于include引入头文件  
+      
+    cunsum()  累和  
+    cumprod() 累积  
+    det() 矩阵行列式值  
+    solve() 解线性方程组  
+    统计分布命名规则:  
+    d 对应概率密度函数或概率质量函数  
+    p 对应累计分布函数  
+    q 对应分布的分位数  
+    r 对应随机数生成函数  
+    sweep(数组,dim{1行/2列},函数参数,函数) 数值分析批量运算符  
+      
+    集合运算：  
+    union(x,y) 集合x和y的并集  
+    intersect(x,y) 集合x和y的交集  
+    setdiff(x,y) 差集  
+    setequal(x,y) 集合x和y是否相等  
+    c%in%y c是否为y集合中的元素  
+    choose(n,k) 从含有n个元素的集合中选取含有k个元素的子集的数目  
+      
+    set.seed(num) 设置种子  
+    class(x)<-"name" 创建类  
+    class(y)<-c("new_name","name") 继承：new_name类从name类继承  
+    save(object,file="path")写入硬盘,load()恢复  
+    edit(file="path") 编辑  
+    scan("",what="") 读入字符串what=""设置为字符串模式  
+    readlines() 读入多行数据  
+    wrielines() 写入多行数据  
+    read.table(",header=T") 读取数据框  
+    file("x","mode") 文件流：mode{r读,w写}  
+      
+    字符串处理：  
+    grep(pattern,x) 在x里搜索字符串pattern并返回索引位置  
+    nchar() 返回字符串x的长度  
+    sprintf("%d",i) 把若干组件组合成字符串  
+    substr("string",start,stop) 返回给定字符串string中指定位置范围(start:stop)的字符串  
+    strsplit(x,split=",") 分割字符并用split的,划分  
+    paste(x,y,",sep="."") 拼接字符串x,y并用sep的.组合   注：sep=""时表示不做分隔  
+    as.integer() 字符串转化为数字  
+    正则表达式：  
+    [au] 含有a或u的字符串  
+    .    任意一个字符  
+      
+    绘图：  
+    plot() 绘出图像  例：plot(x,y,xlab="",ylab="") x:X轴长度 y:Y轴长度 xlab:X轴名字 ylab:Y轴名字  
+    abline(b,k) 直线y=b+kx  
+    lines(x)  添加线  
+    windows()/x11() 新增窗口  
+    points(x) 添加点  
+    locator(1) 找一个点坐标  
+    text(locator(1),"text",cex=2) 在选定位置添加文字,cex字体放大为正常字号2倍  
+    dev.list() 绘图设备列表  
+    dev.cur() 当前绘图设备  
+      
+    dyn.load("xx.so") 调用C程序生成的动态共享库文件.so  
+    .C("function_name",args) 调用C函数  
+
